@@ -1,9 +1,4 @@
-function []=plot_pca(dataset, labels, explain, plotitle)
-
-% figure()
-% pareto(explain)
-% xlabel('Principal Component')
-% ylabel('Variance Explained (%)')
+function []=plot_dataset(dataset, labels,plotitle)
 
 figure()
 colors = rand(length(unique(labels)), 3); % generate random rgb triples

@@ -9,30 +9,22 @@ pixels_dataset = normalize(pixels_dataset);
 dataset = Y';
 
 % plot the dataset after pca
-plot_pca(dataset,labels, explain)
+plot_pca(dataset,labels, explain,'DataSet after PCA')
 
 % CFO
-number_of_clusters = 8;
-cfo(dataset,number_of_clusters,'fuzzy')
-C = confusionmat(labels,c);
-figure()
-confusionchart(C)
+% number_of_clusters = 8;
+% for number_of_clusters = 3:10
+%     predict_labels = cfo(dataset,number_of_clusters,'kmeans');
+% %     plot_dataset(dataset, predict_labels,int2str(number_of_clusters))
+% end
 
-% % Hierarchical
-% % Complete Link
-% Z_complete = linkage(dataset,'complete','minkowski');
-% c = cluster(Z_complete,'Maxclust',length(unique(labels)));
 % figure()
-% scatter3(dataset(:,1),dataset(:,2),dataset(:,3),1,c);
-% % confusion matrix
-% C = confusionmat(labels,c);
-% confusionchart(C)
-% 
-% % Ward
-% Z_ward = linkage(dataset,'ward');
-% c = cluster(Z_ward,'Maxclust',length(unique(labels)));
-% figure()
-% scatter3(dataset(:,1),dataset(:,2),dataset(:,3),1,c);
-% % confusion matrix
-% C = confusionmat(labels,c);
-% confusionchart(C)
+% plotconfusion(categorical(labels),categorical(predict_labels))
+
+% Hierarchical
+for number_of_clusters=7:8
+    predict_labels = hier_clustering(dataset,number_of_clusters,'ward');
+    [conttbl,~,~,~] = crosstab(labels,predict_labels);
+    figure()
+    heatmap(conttbl)
+end
