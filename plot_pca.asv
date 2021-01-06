@@ -11,6 +11,8 @@ colors = rand(length(unique(labels)), 3); % generate random rgb triples
 Colormap = colors(labels, :);
 scatter3(dataset(:,1),dataset(:,2),dataset(:,3),1,Colormap);
 % scatter(dataset(:,1),dataset(:,2),1,Colormap);
+legend([{'First'},{'Second'},{'Third'}])
+
 title(plotitle)
 xlabel('PC1')
 ylabel('PC2')

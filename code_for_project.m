@@ -1,9 +1,9 @@
 % This code is supplementary material for the project of the course
 % "Clustering algorithms"
 function [X,cl_label] = code_for_project()
-    clear
-    format compact
-    close all
+%     clear
+%     format compact
+%     close all
 
     load Salinas_Data
 
@@ -25,7 +25,7 @@ function [X,cl_label] = code_for_project()
 
     cl_label = L(existed_L);
     %...---> cl_label
-
+    
 
     % The following code can be used after the execution of an algorithm 
     % Let "cl_label" be the px-dimensional vector, whose i-th element is the label
