@@ -16,4 +16,10 @@ xlabel('PC1')
 ylabel('PC2')
 zlabel('PC3')
 
+figure()
+scatter(dataset(:,1),dataset(:,2),1,Colormap);
+title(plotitle)
+xlabel('PC1')
+ylabel('PC2')
+
 end

@@ -1,19 +1,21 @@
-function [seeds]=get_number_of_clusters(dataset,approach)
-    seeds = [];
+function []=get_number_of_clusters(dataset,approach)
+    
     switch approach
         case 'kmeans'
             total_cost = [];
             clusters = [];
-            for m=3:12
+            for m=3:20
                 J_temp = [];
-                for i=1:20
+                for i=1:10
                     [theta]=rand_data_init(dataset,m,i);
                     [~,~,J]=k_means(dataset,theta);
+                    disp(J)
+                    disp(i)
+                    disp('============')
                     J_temp = [J_temp;J];
-                end
-                [J_optimal, seed_optimal] = min(J_temp);
+                end    
+                [J_optimal,] = min(J_temp);
                 total_cost = [total_cost;J_optimal];
-                seeds = [seeds;seed_optimal];
                 clusters = [clusters;m];
             end
             figure()

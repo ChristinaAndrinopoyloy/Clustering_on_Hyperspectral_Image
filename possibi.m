@@ -63,7 +63,7 @@ elseif(init_proc==2)
 else(init_proc==3)
     theta_ini=distant_init(X,m,sed);
 end
-theta_ini
+% theta_ini
 
 e_thres=.001;   % This threshold is used in the termination condition
 e=1;
