@@ -17,21 +17,24 @@ pixels_dataset = normalize(pixels_dataset);
 % pca
 [~,~,explain,Y,~]=pca_fun(pixels_dataset',3);
 dataset = Y';
-% dataset = pixels_dataset;
 
 % plot the dataset after pca
 % plot_pca(dataset,labels, explain,'DataSet after PCA')
 
 % select number of clusters
-seeds = get_number_of_clusters(dataset','kmeans')
+% seeds = get_number_of_clusters(dataset','fuzzy');
 number_of_clusters = input('Give the number of clusters, please:');
-seed = seeds(number_of_clusters)
+if ~isempty(seeds)
+    seed = seeds(number_of_clusters);
+else
+    seed = [];
+end
 
 kind_of_clustering = 'CFO';
 switch kind_of_clustering
     case 'CFO'
-        predict_labels = cfo(dataset,number_of_clusters,'kmeans',seed);
-        plot_dataset(dataset, predict_labels,'Dataset after Kmeans')
+        predict_labels = cfo(dataset,number_of_clusters,'probabilistic',seed);
+%         plot_dataset(dataset, predict_labels,'Dataset after Kmeans')
     case 'hier'    
         predict_labels = hier_clustering(dataset,number_of_clusters,'ward');
 %         [conttbl,~,~,~] = crosstab(labels,predict_labels);
@@ -42,7 +45,7 @@ switch kind_of_clustering
         disp('Error')
 end     
 
- view_image(predict_labels); 
+%  view_image(predict_labels); 
 
 % figure()
 % plotconfusion(categorical(labels),categorical(predict_labels))

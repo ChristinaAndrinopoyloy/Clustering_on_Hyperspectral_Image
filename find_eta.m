@@ -1,5 +1,4 @@
-function [eta]=find_eta(dataset,number_of_clusters)
-    q = 1.5;
+function [eta]=find_eta(dataset,number_of_clusters, q)
     options = [q NaN NaN 0];
     [cluster_representatives,U] = fcm(dataset,number_of_clusters, options);
     U = U';
