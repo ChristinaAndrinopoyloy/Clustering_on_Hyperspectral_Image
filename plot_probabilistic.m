@@ -1,4 +1,4 @@
-function []=plot_probabilistic(dataset, predicted_means, predicted_covs, number_of_clusters)
+function []=plot_probabilistic(dataset, predicted_means)
     
     figure()
     scatter(dataset(:,1), dataset(:,2), 3)
@@ -6,8 +6,7 @@ function []=plot_probabilistic(dataset, predicted_means, predicted_covs, number_
     scatter(predicted_means(:,1),predicted_means(:,2),40,'MarkerEdgeColor',[0.6350 0.0780 0.1840],'MarkerFaceColor',[0.6350 0.0780 0.1840],'LineWidth',1.5);
     predicted_means(1,:)
     predicted_covs(:,:,1)
-    f = pdf('Normal','mu',predicted_means(1,:),'sigma',predicted_covs(:,:,1));
-    fcontour(f)
+    hold on
     
     title('Dataset after Probabilistic Clustering')
     xlabel('PC1')

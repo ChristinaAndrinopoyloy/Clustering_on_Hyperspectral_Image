@@ -9,7 +9,7 @@ function [labels]=plot_fuzzy(number_of_clusters, centers, U, data)
     end    
     
     % Find data points with lower maximum membership values.
-    index3 = find(maxU < 0.6);
+    index3 = find(maxU < 0.01);
     
     labels = get_fuzzy_labels(index, index3, number_of_clusters);
     % Plot the results.
@@ -25,7 +25,7 @@ function [labels]=plot_fuzzy(number_of_clusters, centers, U, data)
         plot(centers(i,1),centers(i,2),'xk','MarkerSize',8,'LineWidth',2)
         hold on
     end 
-     title('Fuzzy c-means')
+     title('Probabilistic Clustering')
      xlabel('PC1')
      ylabel('PC2')
    hold off
