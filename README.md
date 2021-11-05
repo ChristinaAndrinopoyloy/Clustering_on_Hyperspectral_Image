@@ -10,3 +10,6 @@ Salinas HSI
 For more information regarding the project please check the **Project - Custering algorithms.pdf**
 
 For more details regarding the algorithms that were utilized and the corresponding results please check the **Clustering_Project.pdf**
+
+
+Code for the implementation of the clustering algorithms is based on: https://github.com/pikrakis/Introduction-to-Pattern-Recognition-a-Matlab-Approach
